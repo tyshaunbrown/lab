@@ -9,14 +9,17 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  strategy: {}
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
   template:
     metadata:
       labels:
         app: nginx
     spec:
       containers:
-      - image: nginx
+      - image: nginx:1.30.2
         name: nginx
         resources: {}
 status: {}
